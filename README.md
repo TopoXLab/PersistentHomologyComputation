@@ -7,3 +7,6 @@ External dependencies:
 - Anaconda3: needed for calling c++ routines from python.
 
 To use this library from c++, we use SWIG (https://www.swig.org/) as the wrapper. The interface of this library is defined in "PersistenceComputer.h". The python wrapper is "PersistenceComputer.i". This library is compiled and tested with a Windows 10 system.
+
+# Updated on 06/18/2023
+Please find a simplified version of persistence computation under "simplified" branch. The simplified version no longer needs opencv or anaconda library to work. Which means you won't be able to invoke persistence computation from within a python program. If that's not what you need, simplified version is highly recommended as it's much easier to compile.
