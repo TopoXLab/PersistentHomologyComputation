@@ -10,3 +10,5 @@ To use this library from c++, we use SWIG (https://www.swig.org/) as the wrapper
 
 # Updated on 06/18/2023
 Please find a simplified version of persistence computation under "simplified" branch. The simplified version no longer needs opencv or anaconda library to work. Which means you won't be able to invoke persistence computation from within a python program. If that's not what you need, simplified version is highly recommended as it's much easier to compile.
+
+Please refer to the folder "Picture_compile_instructions" for pictures showing how to compile the codes on VisualStudio2019.
