@@ -23,8 +23,10 @@ struct InputRunnerCubical
 		blitz::Array<double, dim> phi;
 		
 		if (info.source_mat) {
+#ifdef enable_opencv
 			MatDataReaderCubical<dim, double> reader;
 			reader.read(info.mat, phi);
+#endif
 		}
 		else {
 			if (info.binary)

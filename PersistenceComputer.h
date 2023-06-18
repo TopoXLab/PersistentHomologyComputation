@@ -4,7 +4,10 @@
 #include <iostream>
 #include <cstring>
 #include <vector>
+
+#ifdef enable_opencv
 #include <opencv2/opencv.hpp>
+#endif
 
 #include "InputFileInfo.h"
 
@@ -16,11 +19,13 @@ public:
 	double run();
 	void source_from_file(const std::string& input_file, const std::string& output_file = "");
 
+#ifdef enable_opencv
 	void source_from_mat(const std::string& output_file, const cv::Mat& t);
 
 	void source_from_mat_from_int(const std::string& output_file, std::vector<int>& t, const int height, const int width);
 
 	void source_from_mat_from_double(const std::string& output_file, std::vector<double>& t, const int height, const int width);
+#endif
 	
 	void set_output_file(const std::string& t);
 	void set_pers_thd(double t);

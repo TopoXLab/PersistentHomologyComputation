@@ -1,7 +1,14 @@
 #include "InputFileInfo.h"
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <cassert>
 
 using namespace std;
+
+#ifdef enable_opencv
 using namespace cv;
+#endif
 
 InputFileInfo::InputFileInfo() {
 	// common info
@@ -89,6 +96,8 @@ void InputFileInfo::source_from_file(const string &input_file_, const string &ou
 		f.close();
 	}
 }
+
+#ifdef enable_opencv
 void InputFileInfo::source_from_mat(const string& output_path_, const Mat& t) {
 	// only image data is supported if pass from mat!!
 	file_type = 0;
@@ -98,6 +107,7 @@ void InputFileInfo::source_from_mat(const string& output_path_, const Mat& t) {
 	dimension = mat.dims;
 	assert(dimension <= 8);
 }
+#endif
 
 vector<string> InputFileInfo::split(string strToSplit, char delimeter)
 {

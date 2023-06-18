@@ -41,7 +41,10 @@
 #include "PersistenceComputer.h"
 
 using namespace std;
+
+#ifdef enable_opencv
 using namespace cv;
+#endif
 
 double Persistence_Computer::run() {
 	time_t startTime, endTime;
@@ -60,6 +63,7 @@ void Persistence_Computer::source_from_file(const string& input_file, const stri
 	output_name = file_info.output_path;
 }
 
+#ifdef enable_opencv
 void Persistence_Computer::source_from_mat(const string& output_file, const Mat& t) {
 	file_info.source_from_mat(output_file, t);
 	output_name = file_info.output_path;
@@ -80,6 +84,7 @@ void Persistence_Computer::source_from_mat_from_double(const string& output_file
 	file_info.source_from_mat(output_file, res);
 	output_name = file_info.output_path;
 }
+#endif
 
 void Persistence_Computer::set_pers_thd(double t) {
 	Globals::reduction_threshold = t;
@@ -194,26 +199,26 @@ int main(int argc, const char* argv[])
 }
 #endif
 
-//void main() {
-//	//std::string file_name = "D:/Data/cremi_new/c/gen_00046.png";
-//	std::string file_name = "D:/Data/ChaoData_proc/sublvl/000B_sub.dat";
-//	//cv::Mat img = cv::imread(file_name, 0);
-//
-//	vector<vector<vector<vector<int>>>> final_red_list_grand;
-//	vector<vector<vector<vector<int>>>> final_boundary_list_grand;
-//	vector<vector<vector<int>>> pers_V;
-//	vector<vector<vector<double>>> pers_BD;
-//
-//	Persistence_Computer pc;
-//	//pc.source_from_mat(file_name, img);
-//	pc.source_from_file(file_name);
-//	pc.run();
-//	pc.write_output();
-//
-//	pc.return_bnd(final_boundary_list_grand);
-//	pc.return_pers_V(pers_V);
-//
-//
-//	pc.clear();
-//	system("pause");
-//}
+void main() {
+	//std::string file_name = "D:/Data/cremi_new/c/gen_00046.png";
+	std::string file_name = "E:/Data2/AI_0007_vol2_sup.dat";
+	//cv::Mat img = cv::imread(file_name, 0);
+
+	vector<vector<vector<vector<int>>>> final_red_list_grand;
+	vector<vector<vector<vector<int>>>> final_boundary_list_grand;
+	vector<vector<vector<int>>> pers_V;
+	vector<vector<vector<double>>> pers_BD;
+
+	Persistence_Computer pc;
+	//pc.source_from_mat(file_name, img);
+	pc.source_from_file(file_name);
+	pc.run();
+	pc.write_output();
+
+	pc.return_bnd(final_boundary_list_grand);
+	pc.return_pers_V(pers_V);
+
+
+	pc.clear();
+	//system("pause");
+}

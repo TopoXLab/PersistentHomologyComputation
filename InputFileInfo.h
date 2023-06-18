@@ -3,7 +3,10 @@
 
 #include <cstring>
 #include <vector>
+
+#ifdef enable_opencv
 #include <opencv2/opencv.hpp>
+#endif
 
 class InputFileInfo
 {
@@ -20,7 +23,9 @@ public:
 	int numPoints;
 	int dimPoints;
 
+#ifdef enable_opencv
 	cv::Mat mat;
+#endif
 
 public:
 	InputFileInfo();
@@ -28,7 +33,9 @@ public:
 
 	void source_from_file(const std::string &input_file_, const std::string &output_path_ = "");
 
+#ifdef enable_opencv
 	void source_from_mat(const std::string& output_path_, const cv::Mat& t);
+#endif
 
 	std::vector<std::string> split(std::string strToSplit, char delimeter);
 };
